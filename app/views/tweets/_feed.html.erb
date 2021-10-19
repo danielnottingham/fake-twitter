@@ -1,0 +1,35 @@
+
+<div class="card">
+  <div class="card-header">
+    New Tweet
+  </div>
+  <div class="card-body">
+    <%= render 'form', tweet: @tweet %>
+  </div>
+</div>
+
+<hr />
+
+<% @tweets.each do |tweet| %>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <%# <div class="col-md-4">
+      <img src="..." class="card-img" alt="...">
+    </div> %>
+    <div class="col-md-8">
+      <div class="card-body">
+          <p><%= tweet.comment %></p>
+          <p>
+            <strong>
+              <span><%= tweet.user.email %></span>
+            </strong>
+            <%= tweet.created_at.strftime("%d/%m/%Y às %I:%M %p") %>
+          </p>
+          <% if tweet.user.id == current_user.id %>
+            <%= button_to "Delete", tweet, method: :delete %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
