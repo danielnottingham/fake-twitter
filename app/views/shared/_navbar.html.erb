@@ -8,8 +8,13 @@
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
 
         <% if user_signed_in? %>
+          <% if current_user.avatar.attached? %>
+            <li class="nav-item">
+              <%= image_tag current_user.avatar, height: 40, width: 40, class: "rounded-circle" %>
+            </li>
+          <% end %>
           <li class="nav-item">
-            <%= link_to current_user.email, edit_user_registration_path, class: 'nav-link active ' %>
+            <%= link_to current_user.username, edit_user_registration_path, class: 'nav-link active ' %>
           </li>
           <li class="nav-item">
             <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-primary nav-link", style: "margin-right:5px;" %>
