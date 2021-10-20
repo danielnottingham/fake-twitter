@@ -1,0 +1,28 @@
+<div class="card" >
+  <div class="card-header text-center">
+    Profile
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item text-center">
+      <% if current_user.avatar.attached? %>
+        <%= image_tag current_user.avatar, height: 30, width: 30, class: "rounded-circle" %>
+      <% end %>
+      <strong><%= current_user.username %></strong>
+      <small>@<%= current_user.email %></small>
+    </li>
+  </ul>
+  <div class="card-body">
+    <div class="text-center">
+      <p><strong>Tweets</strong> </p>
+      <p><small><%= current_user.tweets.count %></small></p>
+    </div>
+    <div class="text-center">
+      <p><strong>Following</strong> </p>
+      <p><small><%= current_user.tweets.count %></small></p>
+    </div>
+    <div class="text-center">
+      <p><strong>Followers</strong> </p>
+      <small><%= current_user.tweets.count %></small>
+    </div>
+  </div>
+</div>

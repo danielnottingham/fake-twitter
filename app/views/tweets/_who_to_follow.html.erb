@@ -1,0 +1,12 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-header text-center">
+    Who to Follow
+  </div>
+  <% User.where.not(id: current_user.id).take(10).each do |user| %>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <strong>@<%= user.username %></strong>
+    </li>
+  </ul>
+  <% end %>
+</div>
