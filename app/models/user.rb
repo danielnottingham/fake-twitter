@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :tweets
 
   validates :username, presence: true
+
+  scope :search_by_username, ->(query) { where('username ilike ?', "%#{query}%") }
 end

@@ -1,0 +1,21 @@
+<div>
+  <div class="row">
+    <div class="col-2" style="width: 18rem; margin-left: 20px;">
+      <%= render 'tweets/profile' %>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <% @users.each do |user| %>
+        <ul class="list-group list-group-flush">
+          <li style="list-style-type:none;"><%= link_to user.username, "/users/#{user.id}" %></li>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-2">
+      <%= render 'tweets/who_to_follow' %>
+    </div>
+  </div>
+</div>

@@ -27,8 +27,12 @@
             <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
           </li>
         <% end %>
-
       </ul>
+
+      <%= form_with url: "/users", method: :get, local: true, class: "d-flex" do |form| %>
+        <%= form.text_field :search_by_username, placeholder: "Search", class: "form-control me-2" %>
+        <%= form.submit "Search", class: "btn btn-outline-light" %>
+      <% end %>
     </div>
   </div>
 </nav>

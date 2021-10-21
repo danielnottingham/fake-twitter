@@ -1,0 +1,65 @@
+<div>
+  <div class="row">
+    <div class="col-2" style="width: 18rem; margin-left: 20px;">
+      <%= render 'tweets/profile' %>
+    </div>
+
+    <div class="col-4 text-center">
+      <div>
+        <% if @user.avatar.persisted? %>
+          <%= image_tag @user.avatar, height: 150, width: 150, class: "rounded-circle" %>
+        <% end %>
+      </div>
+      <br>
+      <h2><%= @user.username %></h2>
+      <p><%= @user.email %></p>
+
+      <% if @user != current_user %>
+        <div>
+          <button class="btn btn-success">Follow</button>
+        </div>
+      <% end %>
+      <br>
+      <div>
+        <strong><p>Followers</p></strong>
+        <p> 125k </p>
+      </div>
+      <div>
+        <strong><p>Following</p></strong>
+        <p> 30k </p>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <h2 class="text-center">Tweets</h2>
+
+      <% @user.tweets.each do |tweet| %>
+      <div class="card mb-3" style="max-width: 540px;" id="tweet-card">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card-body">
+              <div>
+                <p>
+                  <%= image_tag tweet.user.avatar, height: 30, width: 30, class: "rounded-circle", id: "comment" %>
+                  <strong>
+                    <span><%= tweet.user.username %></span>
+                  </strong>
+                </p>
+              </div>
+                <p><strong>Comment:</strong> <%= tweet.comment %></p>
+
+                <small>
+                  <%= tweet.created_at.strftime("%d/%m/%Y às %I:%M") %>
+                </small>
+
+                <% if tweet.user.id == current_user.id %>
+                  <%= button_to "Delete", tweet, method: :delete %>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
