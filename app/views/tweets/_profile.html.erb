@@ -8,21 +8,21 @@
         <%= image_tag current_user.avatar, height: 30, width: 30, class: "rounded-circle" %>
       <% end %>
       <strong><%= current_user.username %></strong>
-      <small>@<%= current_user.email %></small>
+      <small><%= current_user.email %></small>
     </li>
   </ul>
   <div class="card-body">
     <div class="text-center">
-      <p><strong>Tweets</strong> </p>
+      <p><strong><%= link_to "Tweets", "/users/#{current_user.id}" %></strong> </p>
       <p><small><%= current_user.tweets.count %></small></p>
     </div>
     <div class="text-center">
-      <p><strong>Following</strong> </p>
-      <p><small><%= current_user.tweets.count %></small></p>
+      <p><strong><%= link_to "Following", "/users/#{current_user.id}" %></strong> </p>
+      <p><small><%= current_user.following.count %></small></p>
     </div>
     <div class="text-center">
-      <p><strong>Followers</strong> </p>
-      <small><%= current_user.tweets.count %></small>
+      <p><strong><%= link_to "Followers", "/users/#{current_user.id}" %></strong> </p>
+      <small><%= current_user.followers.count %></small>
     </div>
   </div>
 </div>

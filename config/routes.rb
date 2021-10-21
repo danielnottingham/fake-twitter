@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :tweets
-  devise_for :users
   root to: 'tweets#index'
+  devise_for :users
+  resources :tweets
+  resources :friendships, only: %i[create destroy]
 
   get '/users/:id', to: 'users#show'
   get '/users', to: 'users#index'
