@@ -46,7 +46,9 @@
             <div class="card-body">
               <div>
                 <p>
+                  <% if tweet.user.avatar.persisted? %>
                   <%= image_tag tweet.user.avatar, height: 30, width: 30, class: "rounded-circle", id: "comment" %>
+                  <% end %>
                   <strong>
                     <span><%= tweet.user.username %></span>
                   </strong>
