@@ -1,11 +1,11 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:destroy]
   before_action :authenticate_user!
+  before_action :find_users
 
   def index
     @tweets = Tweet.all.order("created_at DESC")
     @tweet = Tweet.new
-    @users = User.all
   end
 
   def create
@@ -31,5 +31,9 @@ class TweetsController < ApplicationController
 
     def tweet_params
       params.require(:tweet).permit(:comment, :user_id)
+    end
+
+    def find_users
+      @users = User.all
     end
 end
